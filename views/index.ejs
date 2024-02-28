@@ -1,0 +1,61 @@
+<%- include ('./partials/header.ejs') -%>
+<div class="table-wrapper">
+    <% if(players.length > 0) { %>
+        <table class="table table-hovered">
+            <thead class="thead-dark">
+                <tr> 
+                    <th scope="col"><i class="fas fa-id-badge"></i>&nbsp;ID</th>
+                    <th scope="col"><i class="fas fa-image"></i>&nbsp;Pic</th>
+                    <th scope="col"><i class="fas fa-user"></i>&nbsp;First Name</th>
+                    <th scope="col"><i class="fas fa-user"></i>&nbsp;Last Name</th>
+                    <th scope="col"><i class="fas fa-user-friends"></i>&nbsp;Position</th>
+                    <th scope="col"><i class="fas fa-tshirt"></i>&nbsp;Jersey Number</th>
+                    <th scope="col"><i class="fas fa-user"></i>&nbsp;Jersey Name</th>
+                    <th scope="col"><i class="fas fa-star"></i>&nbsp;Rank</th>
+                    <th scope="col"><i class="fas fa-dollar-sign"></i>&nbsp;Value</th>
+                    <th scope="col"><i class="fas fa-cogs"></i>&nbsp;Action</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <% players.forEach((player, index) => { %>
+                    <tr>
+                        <th scope="row">
+                            <%= player.id %>
+                        </th>
+                        <td><img src="/assets/img/<%= player.image %>" class="rounded-circle player-img" alt="">
+                        </td>
+                        <td>
+                            <%= player.first_name %>
+                        </td>
+                        <td>
+                            <%= player.last_name %>
+                        </td>
+                        <td>
+                            <%= player.position %>
+                        </td>
+                        <td>
+                            <%= player.number %>
+                        </td>
+                        <td> <i class="fas fa-user"></i><%= player.user_name %>
+                        </td>
+                        <td>
+                            <%= player.ranking %>
+                        </td>
+                        <td>
+                            <%= player.value %>
+                        </td>
+                        <td>
+                            <a href="/edit/<%= player.id %>" class="btn btn-sm btn-success">Edit</a>
+                            <a href="/delete/<%= player.id %>" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p class="text-center">Players record is empty. Go <a href="/add">here</a> to add player records.</p>
+    <% } %>
+</div>
+</body>
+</html>
